@@ -15,12 +15,16 @@ public class Aeroplane : MonoBehaviour
 	{
 		indexNum = _indexNum;
 	}
-	
+	public int getIndexNum()
+	{
+		return indexNum; 
+	}
     // Use this for initialization
     void Start ()
     {
         //Find trajectory with associated index num
         trajectories = GameObject.FindObjectsOfType<BezierCurve>();
+
         foreach(BezierCurve _trajectory in trajectories)
         {
             if (_trajectory.indexNum == indexNum)
@@ -28,6 +32,7 @@ public class Aeroplane : MonoBehaviour
                 trajectory = _trajectory;
             }
         }
+		transform.position = trajectory.GetPoint(0); 
 	}
     
 
