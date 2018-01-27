@@ -23,7 +23,7 @@ public class RadarScreen : MonoBehaviour {
 	void Update () {
 		
 	}
-	void SpawnPlaneOnScreen()
+	public void SpawnPlaneOnScreen()
 	{
 		Instantiate(Plane, new Vector3(0.14f, 0.72f, -0.4f), Quaternion.identity); 
 	}
