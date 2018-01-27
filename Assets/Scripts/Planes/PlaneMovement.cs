@@ -10,24 +10,43 @@ public class PlaneMovement : MonoBehaviour
     private float progress = 0.0f;
 
 	// Use this for initialization
-	void Start ()
-    {
-        plane = gameObject.GetComponent<Aeroplane>();
-        indexNum = plane.indexNum;
-        trajectory = plane.trajectory;
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        progress += Time.deltaTime;
 
-        if(progress < 1)
-        {
-            Vector3 position = trajectory.GetPoint(progress);
-            transform.localPosition = position;        
-            transform.LookAt(position + trajectory.GetDirection(progress));
-        }
+
+	public void InitialisePlane()
+	{
+		plane = gameObject.GetComponent<Aeroplane>();
+		indexNum = plane.indexNum;
+
+		trajectory = getTrajectory (); 
+	}
+
+	BezierCurve getTrajectory()
+	{
+		BezierCurve[] trajectories = GameObject.FindObjectsOfType<BezierCurve>();
+		foreach(BezierCurve _trajectory in trajectories)
+		{
+			if (_trajectory.indexNum == plane.getIndexNum())
+			{
+				return _trajectory;
+			}
+		}
+		return null; 
+	}
+	// Update is called once per frame
+	void FixedUpdate ()
+    {
+		if (trajectory.IsInitialised) 
+		{
+
+			progress += 0.01f;
+			
+			if (progress < 1.0f) {
+				Vector3 NewPos = trajectory.GetPoint (progress);
+				transform.localPosition = NewPos;// new Vector3(NewPos.x, NewPos.z, NewPos.y);
+				transform.LookAt (NewPos + trajectory.GetDirection (progress));
+			} else
+				progress = 0; 
+		}
         
     }
 }
