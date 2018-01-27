@@ -8,7 +8,7 @@ public class RadarScreen : MonoBehaviour {
 	//int length = 20; 
 	//Vector3 start = transform.localPosition; 
 	//Vector3 end = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 10);
-	public Transform Plane; 
+	public PlaneOnScreen littlePlane; 
 	void Start () 
 	{
 		//LineRenderer line = gameObject.AddComponent<LineRenderer> (); 
@@ -23,8 +23,9 @@ public class RadarScreen : MonoBehaviour {
 	void Update () {
 		
 	}
-	public void SpawnPlaneOnScreen()
+	public void SpawnPlaneOnScreen(Aeroplane plane)
 	{
-		Instantiate(Plane, new Vector3(0.14f, 0.72f, -0.4f), Quaternion.identity); 
+		Instantiate(littlePlane, new Vector3(0.14f, 0.72f, -0.4f), Quaternion.identity); 
+		littlePlane.setPlane (plane); 
 	}
 }

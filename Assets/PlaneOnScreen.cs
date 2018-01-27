@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlaneOnScreen : MonoBehaviour 
 {
 	// Use this for initialization
+	public PlaneManager planeManager; 
 	Color givenColour; 
 	int fuelLevel; 
 	bool bingoFuel = false; 
-	GameObject plane; 
+	Aeroplane plane; 
 	public bool button; 
 	void Start () 
 	{
@@ -19,6 +20,10 @@ public class PlaneOnScreen : MonoBehaviour
 		//getcomponent button with colour givencolour
 		InvokeRepeating("DrainFuel", 0, 1); 
 	}
+	public void setPlane(Aeroplane pln)
+	{
+		plane = pln; 
+	}
 	void DrainFuel()
 	{
 		fuelLevel--; 
@@ -27,13 +32,13 @@ public class PlaneOnScreen : MonoBehaviour
 	void Update () 
 	{
 		//transform.localPosition = new Vector3 (plane.transform.position.z / scale, transform.localPosition.y, plane.transform.position.x / scale);
-		//plane.x / 320 plane.y / 200     x = -0.4 + (0.8 * ans1)  y = -0.42 + (0.5 * ans2)
-		//float ansx = 320;
-		//float ansy = 200; 
-		//transform.localPosition = new Vector3 (ansy, transform.localPosition.y, ansx);
+		float ansx = -0.4f + (0.8f * (plane.transform.position.x / 320));
+		float ansy = -0.42f + (0.5f *  (plane.transform.position.z / 200)); 
+		transform.localPosition = new Vector3 (ansy, transform.localPosition.y, ansx);
 		if (fuelLevel < 0) 
 		{
-			//Crash
+			//planeManager.crashPlane (plane); 
+			//this.destroy (); 
 		}
 		if (fuelLevel < 25 && bingoFuel == false) 
 		{
