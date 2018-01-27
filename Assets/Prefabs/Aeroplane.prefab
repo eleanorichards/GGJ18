@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23285298443584530}
   - component: {fileID: 114888961598323608}
   - component: {fileID: 114652619094151866}
+  - component: {fileID: 114749207750858294}
   m_Layer: 0
   m_Name: Aeroplane
   m_TagString: Untagged
@@ -97,6 +98,17 @@ MonoBehaviour:
   indexNum: 0
   trajectory: {fileID: 114802562035222566, guid: 7e8b534983869eb41bf95684973e65b9,
     type: 2}
+--- !u!114 &114749207750858294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1027038354014980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 307e7943c712d7644aed8f0abd29ef20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114888961598323608
 MonoBehaviour:
   m_ObjectHideFlags: 1

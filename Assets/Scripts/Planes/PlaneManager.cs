@@ -49,9 +49,15 @@ public class PlaneManager : MonoBehaviour
         {
 			SpawnTrajectory ();
             SpawnPlane();
+
             currentTime = 0;
             Debug.Log("Plane spawned");
         }
+
+		if(Input.GetButtonDown("Fire1"))
+		{
+			
+		}
     }
     
 	void SpawnTrajectory()
@@ -67,10 +73,11 @@ public class PlaneManager : MonoBehaviour
     void SpawnPlane()
     {
 		Aeroplane planeComponent = Instantiate(planePrefab) as Aeroplane;
+		planeComponent.SetIndexNum (indexNum);
 		planeComponent.GetComponent<PlaneMovement> ().InitialisePlane ();
 		planes.Add(planeComponent);
-		planeComponent.SetIndexNum (indexNum);
         SendToConsole(planes[indexNum]);
+		planeComponent.GetComponent<PlaneGrounding> ().InitialiseGroundingSystem ();
         indexNum++;
     }
 
@@ -89,7 +96,7 @@ public class PlaneManager : MonoBehaviour
         wallSelect = Random.Range(0, 4);
 		float RAND = Random.Range (-20, 20);
 		float LARGERAND	= Random.Range (80, 120);
-		//wallSelect = 0;
+		wallSelect = 0;
         switch (wallSelect)
         {
 			case 0: //TOP
@@ -126,10 +133,12 @@ public class PlaneManager : MonoBehaviour
         }
 		initialStep = (node1Pos - node0Pos);
 		nodeNPos = node2Pos;
+
 		while (nodeNPos.y > leftBoundary*3f && nodeNPos.y < rightBoundary*3f && nodeNPos.x < bottomBoundary*3f && nodeNPos.x > topBoundary*3f) 
 		{
 			nodeNPos += initialStep;
 		}
+
 		_trajectory.SetRoute(node0Pos, node1Pos, node2Pos, nodeNPos);     
     }
 
