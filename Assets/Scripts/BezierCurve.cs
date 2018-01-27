@@ -49,10 +49,10 @@ public class BezierCurve : MonoBehaviour
 
 	public void SetLandingRoute(GameObject _landingStrip, GameObject _plane)
 	{
-		nodes [0] =  new Vector3(_plane.transform.position);
-		nodes [1] =  new Vector3(_landingStrip.GetComponentInChildren<Transform> ("landingNode1").position);
-		nodes [2] =  new Vector3(_landingStrip.GetComponentInChildren<Transform> ("landingNode2").position);
-		nodes [3] =  new Vector3(nodes [2]);
+		nodes [0] =  _plane.transform.position;
+		nodes [1] =  _landingStrip.GetComponentInChildren<Transform> ().position;
+		nodes [2] =  _landingStrip.GetComponentInChildren<Transform> ().position;
+		nodes [3] =  nodes [2];
 	}
 
     public Vector3 GetPoint(float t)

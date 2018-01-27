@@ -56,7 +56,9 @@ public class PlaneManager : MonoBehaviour
 
 		if(Input.GetButtonDown("Fire1"))
 		{
-			
+			//trajectory[buttonNum].SetLandingRoute(planes[buttonNum], 
+			//planes[buttonNum].
+
 		}
     }
     
@@ -86,6 +88,7 @@ public class PlaneManager : MonoBehaviour
 		
         int wallSelect = 0;
         float y = 0.0f;
+
 		Vector2 node0Pos = Vector2.zero;
 		Vector2 node1Pos = Vector2.zero;
 		Vector2 node2Pos = Vector2.zero;
@@ -96,7 +99,9 @@ public class PlaneManager : MonoBehaviour
         wallSelect = Random.Range(0, 4);
 		float RAND = Random.Range (-20, 20);
 		float LARGERAND	= Random.Range (80, 120);
+
 		wallSelect = 0;
+
         switch (wallSelect)
         {
 			case 0: //TOP
@@ -127,7 +132,7 @@ public class PlaneManager : MonoBehaviour
 	            break;
 	        default:
 	            node0Pos = new Vector2(topBoundary, leftBoundary);
-			node1Pos = node0Pos + new Vector2(y , rightBoundary - 100);
+				node1Pos = node0Pos + new Vector2(y , rightBoundary - 100);
 				node2Pos = node1Pos + new Vector2(y , leftBoundary + 100);
 	            break;
         }

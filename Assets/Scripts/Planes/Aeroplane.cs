@@ -20,21 +20,6 @@ public class Aeroplane : MonoBehaviour
 	{
 		return indexNum; 
 	}
-    // Use this for initialization
-    void Start ()
-    {
-        //Find trajectory with associated index num
-//        trajectories = GameObject.FindObjectsOfType<BezierCurve>();
-//
-//        foreach(BezierCurve _trajectory in trajectories)
-//        {
-//            if (_trajectory.indexNum == indexNum)
-//            {
-//                trajectory = _trajectory;
-//            }
-//        }
-//		transform.position = trajectory.GetPoint(0); 
-	}
     
 
     public Vector2 GetXY()
