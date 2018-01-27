@@ -329,7 +329,7 @@ public class SteamVR_RenderModel : MonoBehaviour
 
 		if (error != EVRRenderModelError.None)
 		{
-			Debug.LogError(string.Format("Failed to load render model {0} - {1}", renderModelName, error.ToString()));
+			Debug.LogError(string.Format("Failed to load render model {0}  {1}", renderModelName, error.ToString()));
 			return null;
 		}
 
