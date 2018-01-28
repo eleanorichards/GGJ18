@@ -13,7 +13,7 @@ public class ClockScript : MonoBehaviour {
 		hours = 15; 
 		mins = 0; 
 		lastKnownTime = hours.ToString () + ":0" + mins;  
-		InvokeRepeating("tick", 0, 0.5f);
+		InvokeRepeating("tick", 0, 0.1f);
 		clock = GetComponent<TextMesh> (); 
 	}
 	
@@ -43,8 +43,9 @@ public class ClockScript : MonoBehaviour {
 	{
 		return lastKnownTime; 
 	}
+
 	public float getPercentageThroughDay()
 	{
-		return hours / 24; 
+		return ((float)hours / 24.0f); 
 	}
 }

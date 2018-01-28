@@ -9,12 +9,21 @@ public class DayNight : MonoBehaviour {
     public ClockScript clock;
     private Light sunLight;
 
+
 	void Start () {
-        sunLight = gameObject.GetComponent<Light>();
+        sunLight =GetComponent<Light>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        sunLight.intensity = clock.getPercentageThroughDay();
+	void FixedUpdate () {
+
+		if (clock.getPercentageThroughDay () > 0.5f) {
+			sunLight.intensity = 1 - clock.getPercentageThroughDay ();
+		} else {
+			sunLight.intensity = clock.getPercentageThroughDay ();
+		}
+
+
+
 	}
 }
