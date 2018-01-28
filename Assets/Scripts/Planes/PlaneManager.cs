@@ -49,7 +49,7 @@ public class PlaneManager : MonoBehaviour
 		planeComponent.GetComponent<PlaneMovement> ().InitialisePlane (getTrajectory(indexNum));
 		planes.Add(planeComponent);
 		SendToConsole(planes[indexNum]);
-		radarScreen.SpawnPlaneOnScreen (/*planeComponent*/);
+		//radarScreen.SpawnPlaneOnScreen (/*planeComponent*/);
 		indexNum++;
 		
 	}
@@ -72,22 +72,22 @@ public class PlaneManager : MonoBehaviour
     
 	public void LandLeverPulled()
 	{
-		int planeNum = InputManager.GetButtonDown("planeSelection");
-		int runwayNum = InputManager.GetButtonDown("runwaySelection");
-		if (runways[runwayNum].GetComponent<Runway>().IsPlaneInTrigger(planes[planeNum]) 
+		//int planeNum = InputManager.GetButtonDown("planeSelection");
+		//int runwayNum = InputManager.GetButtonDown("runwaySelection");
+		/*if (runways[runwayNum].GetComponent<Runway>().IsPlaneInTrigger(planes[planeNum]) 
 			&& runways[runwayNum].GetComponent<Runway>().IsPlaneAligned(planes[planeNum].transform.rotation.y))
 		{
 			LandPlane(planeNum, runwayNum);
-		}
+		}*/
 
 	}
 
 	public void TakeOffLeverPulled(int _planeNum)
 	{
-		int planeNum = InputManager.GetButtonDown("planeSelection");
+		/*int planeNum = InputManager.GetButtonDown("planeSelection");
 		int runwayNum = InputManager.GetButtonDown("planeSelection");
 		planes[planeNum].transform.eulerAngles.y += 180; 
-		TakeOffPlane(planeNum, runwayNum); 
+		TakeOffPlane(planeNum, runwayNum); */
 	}
 
 
@@ -167,12 +167,12 @@ public class PlaneManager : MonoBehaviour
 		//I'm sorry about the GetComponent thing, but get the two points
 		//attached to the runway prefabs, //transform1 = node3, //transform2 = node4
 		//y value gradually decreases
-		node0Pos =  planes[planeNum].transform.position;
+		/*node0Pos =  planes[planeNum].transform.position;
 		node1Pos =  new Vector3(planes[planeNum].transform.position.x, planes[planeNum].transform.position.y/2, 
 			runways[runwayNum].GetComponentInChildren<Transform> ("Transform1").position.z);
 		node2Pos =  new Vector3(runways[runwayNum].GetComponentInChildren<Transform> ("Transform1").position.x, 0, 
 			runways[runwayNum].GetComponentInChildren<Transform> ("Transform1").position.z);
-		nodeNPos =  runways[runwayNum].GetComponentInChildren<Transform> ("Transform2").position;
+		nodeNPos =  runways[runwayNum].GetComponentInChildren<Transform> ("Transform2").position;*/
 
 		getTrajectory(planeNum).SetRoute(node0Pos, node1Pos, node2Pos, nodeNPos);
 	}
@@ -231,8 +231,8 @@ public class PlaneManager : MonoBehaviour
 		//transform2
 		//transform1 (.y + 25)
 		// repeat until off border
-		node0Pos =  runways[runwayNum].GetComponentInChildren<Transform> ("Transform2").position;
-		node1Pos =  runways[runwayNum].GetComponentInChildren<Transform> ("Transform1").position;
+		//node0Pos =  runways[runwayNum].GetComponentInChildren<Transform> ("Transform2").position;
+		//node1Pos =  runways[runwayNum].GetComponentInChildren<Transform> ("Transform1").position;
 		initialStep = node1Pos - node0Pos;
 		node2Pos =  initialStep + (node1Pos - node0Pos);
 
