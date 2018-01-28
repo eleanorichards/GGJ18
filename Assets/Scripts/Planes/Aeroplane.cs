@@ -10,7 +10,6 @@ public class Aeroplane : MonoBehaviour
 
     public BezierCurve trajectory;
 
-
 	public void SetIndexNum(int _indexNum)
 	{
 		indexNum = _indexNum;

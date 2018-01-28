@@ -5,6 +5,8 @@ using UnityEngine;
 public class Runway : MonoBehaviour {
 	public bool inTrigger = false;
 
+	private List<Aeroplane> planes = new List<Aeroplane>();
+
 	// Use this for initialization
 	void Start () {
 		
@@ -15,8 +17,32 @@ public class Runway : MonoBehaviour {
 		
 	}
 
+	public bool IsPlaneInTrigger(Aeroplane plane)
+	{
+		for (int i = 0; i < planes.Count; i++)
+			if (planes [i] == plane)
+				return true; 
+		return false; 
+	}
+
+	public bool IsPlaneAligned (float planeYRot)
+	{
+		return (planeYRot > transform.rotation.y - 90 && planeYRot < transform.rotation.y + 90); 
+	}
+
 	void OnTriggerStay(Collider col)
 	{
 		inTrigger = true;
 	}
+
+	void OnTriggerEnter(Collider col)
+	{
+		planes.Add (col.gameObject.GetComponent<Aeroplane> ());
+	}
+		
+	void OnTriggerExit(Collider col)
+	{
+		planes.Remove (col.gameObject.GetComponent<Aeroplane> ());
+	}
+
 }

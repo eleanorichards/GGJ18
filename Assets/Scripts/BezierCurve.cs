@@ -21,8 +21,6 @@ public class BezierCurve : MonoBehaviour
 
 	public void InitialiseNodeArray()
 	{
-		//AddCurve();
-
 		Debug.Log (nodes.Length);
 		IsInitialised = true;
 	}
@@ -32,28 +30,14 @@ public class BezierCurve : MonoBehaviour
 		indexNum = _indexNum;
 	}
 	
-    public void SetRoute(Vector2 _node0Pos, Vector2 _node1Pos, Vector2 _node2Pos, Vector2 _nodeNPos)
+    public void SetRoute(Vector3 _node0Pos, Vector3 _node1Pos, Vector3 _node2Pos, Vector3 _nodeNPos)
     {     
 		
-		nodes[0] = new Vector3(_node0Pos.x, 0, _node0Pos.y); 
-		nodes[1] = new Vector3(_node1Pos.x, 0, _node1Pos.y);
-		nodes[2] = new Vector3(_node2Pos.x, 0, _node2Pos.y);
-		nodes[3] = new Vector3(_nodeNPos.x, 0, _nodeNPos.y);
-        //initialStep = (_node1Pos - _node0Pos);
-        //Debug.Log(initialStep);
-        //for (int i = 1; i < nodes.Length; i++)
-        //{
-        //    nodes[i] = (nodes[i - 1] + initialStep);           
-        //}        
+		nodes[0] = _node0Pos;
+		nodes[1] = _node1Pos;
+		nodes[2] = _node2Pos;
+		nodes[3] = _nodeNPos;
     }
-
-	public void SetLandingRoute(GameObject _landingStrip, GameObject _plane)
-	{
-		nodes [0] =  _plane.transform.position;
-		nodes [1] =  _landingStrip.GetComponentInChildren<Transform> ().position;
-		nodes [2] =  _landingStrip.GetComponentInChildren<Transform> ().position;
-		nodes [3] =  nodes [2];
-	}
 
     public Vector3 GetPoint(float t)
     {

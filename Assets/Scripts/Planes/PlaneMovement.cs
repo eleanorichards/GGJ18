@@ -11,27 +11,15 @@ public class PlaneMovement : MonoBehaviour
 	// Use this for initialization
 
 
-	public void InitialisePlane()
+	public void InitialisePlane(BezierCurve _trajectory)
 	{
 		plane = gameObject.GetComponent<Aeroplane>();
 		//indexNum = plane.indexNum;
 
-		trajectory = getTrajectory (); 
+		trajectory = _trajectory;
 	}
 
-	public BezierCurve getTrajectory()
-	{
-		BezierCurve[] trajectories = GameObject.FindObjectsOfType<BezierCurve>();
-		foreach(BezierCurve _trajectory in trajectories)
-		{
-			if (_trajectory.indexNum == plane.getIndexNum())
-			{
-				return _trajectory;
-			}
-		}
-		return null; 
 
-	}
 
 	// Update is called once per frame
 	void FixedUpdate ()
